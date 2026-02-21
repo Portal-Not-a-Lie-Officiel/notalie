@@ -18,7 +18,7 @@
             --footer-bg: #090a0c;
         }
 
-        /* --- PERSONNALISATION DE LA SÉLECTION (ROUGE) --- */
+        /* --- PERSONNALISATION DE LA SÉLECTION --- */
         ::selection {
             background-color: #ff0000;
             color: #ffffff;
@@ -55,7 +55,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 50px; /* Réduit un peu pour compenser la hauteur du logo */
+            padding: 10px 50px;
             background: #000000;
             position: fixed;
             width: 100%;
@@ -66,7 +66,7 @@
         }
 
         .nav-logo-img {
-            height: 45px; /* Taille pour la barre de navigation */
+            height: 45px;
             width: auto;
             display: block;
         }
@@ -113,7 +113,6 @@
             box-shadow: inset 0 -20px 20px rgba(0, 0, 0, 0.5);
         }
 
-        /* Taille du gros logo central */
         .hero-logo-img {
             max-width: 600px;
             width: 90%;
@@ -163,6 +162,8 @@
             border-color: var(--color-accent);
             box-shadow: 0 0 15px rgba(62, 147, 211, 0.4);
             min-width: 280px;
+            opacity: 0.7;
+            cursor: not-allowed;
         }
 
         .btn-github { background-color: #24292e; border-color: #24292e; }
@@ -197,6 +198,49 @@
 
         .card-content { padding: 15px; }
 
+        /* --- STYLE FAQ --- */
+        .faq-item {
+            margin-bottom: 10px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background: #252525;
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .faq-question:hover {
+            background: #2c2c2c;
+            color: var(--color-accent);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            background: var(--color-card-bg);
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 15px 20px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
         /* --- FOOTER --- */
         footer {
             background-color: var(--footer-bg);
@@ -220,20 +264,39 @@
         .copyright { color: var(--color-text-muted); font-size: 0.85rem; font-weight: 500; }
 
         .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 20px; }
-        .footer-links { display: flex; gap: 20px; }
-        .footer-links a { color: white; text-decoration: none; font-weight: 500; font-size: 0.9rem; }
         .footer-socials { display: flex; gap: 15px; }
         .footer-socials img { height: 24px; width: 24px; filter: invert(0.7); transition: 0.3s; }
         .footer-socials img:hover { filter: invert(1); }
 
+        /* --- MEDIA QUERIES --- */
         @media (max-width: 768px) {
             nav { padding: 12px 20px; }
             .hamburger { display: flex; }
+            
             .nav-links {
-                width: 100%; flex-direction: column; position: absolute; top: 67px; left: 0;
-                background: #000; border-top: 1px solid #333; max-height: 0; overflow: hidden; transition: 0.5s;
+                width: 100%; 
+                flex-direction: column; 
+                position: absolute; 
+                top: 67px; 
+                left: 0;
+                background: #000; 
+                border-top: 1px solid #333; 
+                max-height: 0; 
+                opacity: 0; 
+                overflow: hidden; 
+                transition: 0.5s;
+                /* --- CENTRAGE DU TEXTE DANS LE MENU --- */
+                align-items: center; 
+                justify-content: center;
+                gap: 20px;
             }
-            .nav-links.active { max-height: 400px; padding-bottom: 10px; opacity: 1; }
+
+            .nav-links.active { 
+                max-height: 400px; 
+                padding: 20px 0; 
+                opacity: 1; 
+            }
+
             .footer-container { flex-direction: column; align-items: center; text-align: center; }
             .footer-right { align-items: center; }
         }
@@ -255,7 +318,7 @@
             <div class="nav-links" id="nav-links">
                 <a href="#"><i class="fas fa-home"></i> Accueil</a>
                 <a href="#features"><i class="fas fa-info-circle"></i> Fonctionnalités</a>
-                <a href="#about"><i class="fas fa-tools"></i> Installation</a>
+                <a href="#faq"><i class="fas fa-question-circle"></i> FAQ</a>
                 <a href="https://github.com/Portal-Not-a-Lie-Officiel" target="_blank"><i class="fab fa-github"></i> GitHub</a>
             </div>
         </nav>
@@ -267,16 +330,16 @@
                 <p class="subtitle">Un mod narratif unique propulsé par Strata Source & p2ce.</p>
                 <div class="powered-by-rev">Compatible avec le moteur de p2ce.</div>
                 <p class="prerequisite-note">
-                    <i class="fas fa-exclamation-triangle"></i> **Jeu Requis :** Vous devez posséder Portal 2 et Portal 2 : Community Edition sur Steam pour jouer.
+                    <i class="fas fa-tools"></i> **Statut :** Le mod est actuellement en développement.
                 </p>
             </div>
 
             <div class="btn-group" style="margin-top: -30px; z-index: 10;">
-                <a href="https://store.steampowered.com/app/620/Portal_2/" class="btn btn-primary" target="_blank">
-                    <i class="fas fa-download"></i> Télécharger le Mod
+                <a href="#" class="btn btn-primary">
+                    <i class="fas fa-clock"></i> Bientôt disponible
                 </a>
                 <a href="https://github.com/Portal-Not-a-Lie-Officiel" class="btn btn-github" target="_blank">
-                    <i class="fab fa-github"></i> Accéder au Dépôt GitHub
+                    <i class="fab fa-github"></i> Suivre sur GitHub
                 </a>
             </div>
         </header>
@@ -295,7 +358,7 @@
                     <div class="card-image card-image-2"></div>
                     <div class="card-content">
                         <h3>Nouvelle Histoire</h3>
-                        <p>Plongez dans une narration captivante.</p>
+                        <p>Plongez dans une narration captivante et mystérieuse.</p>
                     </div>
                 </div>
                 <div class="card">
@@ -308,14 +371,36 @@
             </div>
         </div>
 
-        <div class="container" id="about" style="background-color: var(--color-card-bg); border-radius: 8px;">
-            <h2 class="section-title">Installation</h2>
-            <ol style="color: var(--color-text-muted); padding-left: 20px;">
-                <li style="margin-bottom: 10px;">Téléchargez et installez p2ce sur Steam.</li>
-                <li style="margin-bottom: 10px;">Téléchargez la dernière version de Not a Lie depuis GitHub.</li>
-                <li style="margin-bottom: 10px;">Extrayez le dossier dans votre répertoire <code>steamapps/sourcemod</code>.</li>
-                <li>Redémarrez Steam puis Portal Not a Lie va apparaître.</li>
-            </ol>
+        <div class="container" id="faq">
+            <h2 class="section-title">Foire Aux Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">Quand le mod sera-t-il disponible ? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">
+                    Le mod est actuellement en plein développement. Aucune date de sortie n'est prévue pour le moment afin d'éviter tout retard et de garantir la meilleure expérience possible aux joueurs.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Le mod sera-t-il gratuit ? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">
+                    Oui, Portal: Not a Lie sera totalement gratuit pour tous les possesseurs de Portal 2 sur Steam dès sa sortie officielle.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Qu'est-ce que Strata Source ? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">
+                    Strata Source est une version évoluée du moteur Source. Elle permet d'intégrer des graphismes plus modernes, une meilleure gestion des lumières et des mécaniques de jeu avancées.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Puis-je contribuer au projet ? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">
+                    Pour le moment, les contributions extérieures ne sont pas ouvertes car l'équipe se concentre sur le développement interne. Cependant, <strong>des recrutements pourraient être organisés à l'avenir</strong> selon les besoins du projet.
+                </div>
+            </div>
         </div>
     </div>
 
@@ -327,25 +412,36 @@
             </div>
 
             <div class="footer-right">
-                <div class="footer-links">
-                    <a href=""></a>
-                    <a href=""></a>
-                </div>
                 <div class="footer-socials">
                     <a href="https://github.com/portal-not-a-lie-officiel" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub"></a>
-                    <a href="https://discord.gg/KFDCFK2gch" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Twitter"></a>
+                    <a href="https://discord.gg/KFDCFK2gch" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord"></a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
+        // Gestion du menu mobile
         const hamburger = document.getElementById('hamburger-icon');
         const navLinks = document.getElementById('nav-links');
 
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navLinks.classList.toggle('active');
+        });
+
+        // Gestion de l'accordéon FAQ
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                faqItems.forEach(i => i.classList.remove('active'));
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
         });
     </script>
 </body>
